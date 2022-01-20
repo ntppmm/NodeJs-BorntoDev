@@ -8,9 +8,12 @@ const path = require('path');
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname,'/public/')))
 
+app.set('views','./src/views'); // ตอน render ให้มา folder นี้
+app.set('view engine','ejs');
+
 app.get("/",(req,res)=>{
 
-    res.send('Hello World 123');
+    res.render('index', {username: 'Nitipoom', customer: ['A','B','C']}); // render จาก app.set views ไฟล์ชื่อ index
 
 })
 
